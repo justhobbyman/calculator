@@ -60,7 +60,7 @@
             padding: 14px;
             font-size: 18px;
             margin-bottom: 25px;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             border-radius: 8px;
         }
         select#sellingFeeSelect, input#sellingFee {
@@ -281,15 +281,16 @@
         }
 
         function sharePNL() {
-            const spotResult = document.getElementById('result').innerText;
+            const spotResultPNL = document.getElementById('resultPNL').innerText;
+            const spotResultROE = document.getElementById('resultROE').innerText;
             const futureResultDollar = document.getElementById('leverageResultDollar').innerText;
             const futureResultPercent = document.getElementById('leverageResultPercent').innerText;
         
             let shareText;
-            if (spotResult) {
-                shareText = spotResult;
+            if (spotResultPNL) {
+                shareText = spotResultPNL + '\n' + spotResultROE;
             } else {
-                shareText = futureResultDollar + '. ' + futureResultPercent;
+                shareText = futureResultDollar + '\n' + futureResultPercent;
             }
         
             copyToClipboard(shareText);
