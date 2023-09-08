@@ -299,9 +299,18 @@
         }
 
         document.getElementById(tabName).style.display = "block";
-        event.currentTarget.className += " active";
-        }
 
+         if (event) {
+                event.currentTarget.className += " active";
+            } else {
+                if (tabName === "spot") {
+                    document.querySelector('.tab-button:nth-child(1)').className += " active";
+                } else if (tabName === "future") {
+                    document.querySelector('.tab-button:nth-child(2)').className += " active";
+                }
+            }
+        }
+          
        function calculateLeverageProfitLoss() {
             const positionType = document.getElementById('positionType').value;
             const leverage = parseFloat(document.getElementById('leverageAmount').value);
