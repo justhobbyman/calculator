@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto PNL Calculator</title>
     <meta name="description" content="Easily calculate your cryptocurrency profit and loss with our Crypto PNL Calculator. Supports both spot and future calculations.">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5897295133273451"
+     crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="WqVYzW8N3gkE6iEBnUzrkVRODWjX37RLIEHehfhdf5E" />
     <style>
         body {
@@ -285,16 +287,19 @@
             const spotResultROE = document.getElementById('resultROE').innerText;
             const futureResultDollar = document.getElementById('leverageResultDollar').innerText;
             const futureResultPercent = document.getElementById('leverageResultPercent').innerText;
-        
+            
             let shareText;
             if (spotResultPNL) {
                 shareText = spotResultPNL + '\n' + spotResultROE;
             } else {
                 shareText = futureResultDollar + '\n' + futureResultPercent;
             }
+            
+            // 현재 페이지의 URL 추가
+            shareText += '\n\n' + window.location.href;
         
             copyToClipboard(shareText);
-            alert('Your result has been copied to the clipboard. Paste it wherever you like!');
+            alert('Your result and website link have been copied to the clipboard. Paste it wherever you like!');
         }
 
         function copyToClipboard(text) {
