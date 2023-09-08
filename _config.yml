@@ -1,0 +1,8 @@
+title: My Calculator Site
+email: kane@heybit.io
+description: >- # this means to ignore newlines until "baseurl:"
+ You can calculate your crypto profit and loss now. I gonna develop more soon.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://kaneseo-strategy.github.io/calculator" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  kaneseo-strategy
