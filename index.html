@@ -217,7 +217,8 @@
         <input type="number" id="sellingFee" placeholder="Enter or select fee" style="display:none;">
 
         <button onclick="calculateProfitLoss()">Calculate</button>
-        <p id="result" class="result"></p>
+        <p id="resultPNL" class="result"></p>
+        <p id="resultROE" class="result"></p>
         <button onclick="sharePNL()">Share My PNL</button>
     </div>
 
@@ -230,35 +231,42 @@
             const buyPrice = parseFloat(document.getElementById('buyPrice').value);
             const sellPrice = parseFloat(document.getElementById('sellPrice').value);
             const investmentAmount = parseFloat(document.getElementById('investmentAmount').value);
-    
+        
             let buyingFee = parseFloat(document.getElementById('buyingFee').value);
             if (isNaN(buyingFee)) {
                 buyingFee = parseFloat(document.getElementById('buyingFeeSelect').value);
             }
-    
+        
             let sellingFee = parseFloat(document.getElementById('sellingFee').value);
             if (isNaN(sellingFee)) {
                 sellingFee = parseFloat(document.getElementById('sellingFeeSelect').value);
             }
-    
-                buyingFee = buyingFee / 100;
-                sellingFee = sellingFee / 100;
-
+        
+            buyingFee = buyingFee / 100;
+            sellingFee = sellingFee / 100;
+        
             const totalBuyingFee = investmentAmount * buyingFee;
             const profitLoss = (investmentAmount / buyPrice) * (sellPrice - buyPrice) - totalBuyingFee - (investmentAmount / buyPrice) * sellPrice * sellingFee;
-
-            const resultElement = document.getElementById('result');
-                resultElement.innerText = `Profit/Loss: $${profitLoss.toFixed(2)}`;
-    
+        
+            const ROE = (profitLoss / investmentAmount) * 100;
+        
+            const resultPNLElement = document.getElementById('resultPNL');
+            const resultROEElement = document.getElementById('resultROE');
+        
+            resultPNLElement.innerText = `Profit/Loss: $${profitLoss.toFixed(2)}`;
+            resultROEElement.innerText = `ROE: ${ROE.toFixed(2)}%`;
+        
             if (profitLoss < 0) {
-                resultElement.style.color = 'blue';
+                resultPNLElement.style.color = 'blue';
+                resultROEElement.style.color = 'blue';
             } else if (profitLoss > 0) {
-                resultElement.style.color = 'red';
+                resultPNLElement.style.color = 'red';
+                resultROEElement.style.color = 'red';
             } else {
-                resultElement.style.color = '#FFFFFF';
+                resultPNLElement.style.color = '#FFFFFF';
+                resultROEElement.style.color = '#FFFFFF';
             }
         }
-       
 
         function updateInputValue(inputId, value) {
             const inputElement = document.getElementById(inputId);
@@ -271,21 +279,40 @@
         }
 
         function sharePNL() {
-            const result = document.getElementById('result').innerText;
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Crypto PNL Calculator',
-                    text: result,
-                    url: window.location.href,
-                })
-                .then(() => console.log('Successful share'))
-                .catch((error) => console.log('Error sharing', error));
+            const spotResult = document.getElementById('result').innerText;
+            const futureResultDollar = document.getElementById('leverageResultDollar').innerText;
+            const futureResultPercent = document.getElementById('leverageResultPercent').innerText;
+        
+            let shareText;
+            if (spotResult) {
+                shareText = spotResult;
             } else {
-                alert('Sharing not supported on this browser.');
+                shareText = futureResultDollar + '. ' + futureResultPercent;
             }
+        
+            copyToClipboard(shareText);
+            alert('Your result has been copied to the clipboard. Paste it wherever you like!');
         }
 
-      function showTab(tabName, event) {
+        function copyToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+        
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        
+            document.body.removeChild(textArea);
+        }
+        
+
+
+       function showTab(tabName, event) {
         var i, content, buttons;
 
         content = document.getElementsByClassName("content");
