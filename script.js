@@ -161,9 +161,8 @@ const languages = {
     },
     kr: {
         header: "코인베스트폴리오",
-        spotTab: "스팟 계산기",
+        spotTab: "현물 계산기",
         futureTab: "선물 계산기",
-
         positionType: "포지션 유형:",
         long: "롱",
         short: "숏",
