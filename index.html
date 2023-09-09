@@ -14,6 +14,41 @@
     <link rel="stylesheet" href="style.css">
     <!-- End of external CSS link -->
 
+    <style>
+        header {
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+        }
+
+        nav {
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            padding: 20px;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,88 +59,43 @@
 
     <nav>
         <a href="index.html">Home</a>
+        <a href="#">Spot Calculator</a>
+        <a href="futureCalculator.html">Future Calculator</a>
         <a href="DCAcalculator.html">DCA Calculator</a>
     </nav>
 
-    <div style="text-align: right; padding-right: 50px; font-weight: bold; margin-bottom: 20px;">
-        <select id="languageSelect" onchange="changeLanguage()">
-            <option value="en">EN</option>
-            <option value="kr">KR</option>
-        </select>
-    </div>
-
-    <div class="tabs">
-        <button class="tab-button active" onclick="showTab('spot', event)">Spot Calculator</button>
-        <button class="tab-button" onclick="showTab('future', event)">Future Calculator</button>
-    </div>
-
-    <div class="tab-content">
-        <div id="future" class="content calculator">
-            <label for="positionType">Position Type:</label>
-            <select id="positionType">
-                <option value="long">Long</option>
-                <option value="short">Short</option>
+    <div class="main-content">
+        <div style="text-align: right; padding-right: 50px; font-weight: bold; margin-bottom: 20px;">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">EN</option>
+                <option value="kr">KR</option>
             </select>
-
-            <label for="leverageAmount">Leverage (e.g., 10 for 10x):</label>
-            <input type="number" id="leverageAmount" placeholder="Enter leverage">
-
-            <label for="investmentLeverage">Coin Quantity:</label>
-            <input type="number" id="investmentLeverage" placeholder="Enter coin quantity">
-
-            <label for="entryPrice">Entry Price ($):</label>
-            <input type="number" id="entryPrice" placeholder="Enter entry price">
-
-            <label for="exitPrice">Exit Price ($):</label>
-            <input type="number" id="exitPrice" placeholder="Enter exit price">
-
-            <button onclick="calculateLeverageProfitLoss()">Calculate</button>
-            <button onclick="sharePNL()">Share My PNL</button>
-            <p id="leverageResultDollar" class="result"></p>
-            <p id="leverageResultPercent" class="result"></p>
         </div>
 
-        <div id="spot" class="content active calculator">
-            <label for="buyPrice">Buy Price ($)</label>
-            <input type="number" id="buyPrice" placeholder="Enter buy price">
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('spot', event)">Spot Calculator</button>
+            <button class="tab-button" onclick="showTab('future', event)">Future Calculator</button>
+        </div>
 
-            <label for="sellPrice">Sell Price ($)</label>
-            <input type="number" id="sellPrice" placeholder="Enter sell price">
+        <div class="tab-content">
+            <div id="future" class="content calculator">
+                <!-- ... Content for Future Calculator ... -->
+            </div>
 
-            <label for="investmentAmount">Investment Amount ($)</label>
-            <input type="number" id="investmentAmount" placeholder="Enter investment amount">
-
-            <label for="buyingFeeSelect">Buying Fee</label>
-            <select id="buyingFeeSelect" style="width: 100%;" onchange="updateInputValue('buyingFee', this.value)">
-                <option value="0.01">0.01%</option>
-                <option value="0.05">0.05%</option>
-                <option value="1">1%</option>
-                <option value="custom">Custom...</option>
-            </select>
-            <input type="number" id="buyingFee" placeholder="Enter or select fee" style="display:none;">
-
-            <label for="sellingFeeSelect">Selling Fee</label>
-            <select id="sellingFeeSelect" style="width: 100%;" onchange="updateInputValue('sellingFee', this.value)">
-                <option value="0.01">0.01%</option>
-                <option value="0.05">0.05%</option>
-                <option value="1">1%</option>
-                <option value="custom">Custom...</option>
-            </select>
-            <input type="number" id="sellingFee" placeholder="Enter or select fee" style="display:none;">
-
-            <button onclick="calculateProfitLoss()">Calculate</button>
-            <button onclick="sharePNL()">Share My PNL</button>
-            <p id="resultPNL" class="result"></p>
-            <p id="resultROE" class="result"></p>
+            <div id="spot" class="content active calculator">
+                <!-- ... Content for Spot Calculator ... -->
+            </div>
         </div>
 
         <footer>
             © 2023 Crypto PNL Calculator. All rights reserved.
         </footer>
 
-        <!-- External JS link -->
-        <script src="script.js"></script>
-        <!-- End of external JS link -->
+    </div>
+
+    <!-- External JS link -->
+    <script src="script.js"></script>
+    <!-- End of external JS link -->
 </body>
 
 </html>
