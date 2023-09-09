@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Calculator</title>
+    <meta name="description" content="Easily calculate your cryptocurrency profit and loss with our Crypto PNL Calculator. Supports both spot and future calculations.">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        coinvestFolio
+    </header>
+    <nav>
+        <div id="sidebar">
+            <a href="index.html">Spot Calculator</a>
+            <a href="futureCalculator.html">Future Calculator</a>
+            <a href="DCAcalculator.html">DCA Calculator</a>
+        </div>
+    </nav>
+    <div class="calculator"> 
+        <label for="positionType">Position Type:</label>
+        <select id="positionType">
+            <option value="long">Long</option>
+            <option value="short">Short</option>
+        </select>
+
+        <label for="leverageAmount">Leverage (e.g., 10 for 10x):</label>
+        <input type="number" id="leverageAmount" placeholder="Enter leverage">
+
+        <label for="investmentLeverage">Coin Quantity:</label>
+        <input type="number" id="investmentLeverage" placeholder="Enter coin quantity">
+
+        <label for="entryPrice">Entry Price ($):</label>
+        <input type="number" id="entryPrice" placeholder="Enter entry price">
+
+        <label for="exitPrice">Exit Price ($):</label>
+        <input type="number" id="exitPrice" placeholder="Enter exit price">
+
+        <button onclick="calculateLeverageProfitLoss()">Calculate</button>
+        <button onclick="sharePNL()">Share My PNL</button>
+        <p id="leverageResultDollar" class="result"></p>
+        <p id="leverageResultPercent" class="result"></p>
+    </div>
+    <footer>
+        © 2023 Crypto PNL Calculator. All rights reserved.
+    </footer>
+</body>
+</html>
