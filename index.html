@@ -169,7 +169,7 @@
     </header>
 
     <nav>
-        <a href="spot-calculator">Spot Calculator</a>
+        <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
         <a href="future-calculator">Future Calculator</a>
         <a href="dca-calculator">DCA Calculator</a>
         
@@ -184,41 +184,7 @@
     </div>
 
 
-
-   <div class="tabs">
-    <button class="tab-button active" onclick="showTab('spot', event)">Spot Calculator</button>
-    <button class="tab-button" onclick="showTab('future', event)">Future Calculator</button>
-    </div>
-
-    <div class="tab-content">
-    <div id="future" class="content calculator"> 
-    <label for="positionType">Position Type:</label>
-    <select id="positionType">
-        <option value="long">Long</option>
-        <option value="short">Short</option>
-    </select>
-
-    <label for="leverageAmount">Leverage (e.g., 10 for 10x):</label>
-    <input type="number" id="leverageAmount" placeholder="Enter leverage">
-
-    <label for="investmentLeverage">Coin Quantity:</label>
-    <input type="number" id="investmentLeverage" placeholder="Enter coin quantity">
-
-    <label for="entryPrice">Entry Price ($):</label>
-    <input type="number" id="entryPrice" placeholder="Enter entry price">
-
-    <label for="exitPrice">Exit Price ($):</label>
-    <input type="number" id="exitPrice" placeholder="Enter exit price">
-
-    <button onclick="calculateLeverageProfitLoss()">Calculate</button>
-    <button onclick="sharePNL()">Share My PNL</button>
-    <p id="leverageResultDollar" class="result"></p>
-    <p id="leverageResultPercent" class="result"></p>
-</div>
-
-
-    
-     <div id="spot" class="content active calculator">
+     <div class="spot-calculator">
         <label for="buyPrice">Buy Price ($)</label>
         <input type="number" id="buyPrice" placeholder="Enter buy price">
 
@@ -250,7 +216,6 @@
         <button onclick="sharePNL()">Share My PNL</button>
         <p id="resultPNL" class="result"></p>
         <p id="resultROE" class="result"></p>
-        
     </div>
 
     <footer>
@@ -346,69 +311,6 @@
         }
         
 
-
-       function showTab(tabName, event) {
-        var i, content, buttons;
-
-        content = document.getElementsByClassName("content");
-        for (i = 0; i < content.length; i++) {
-            content[i].style.display = "none";
-        }
-
-        buttons = document.getElementsByClassName("tab-button");
-        for (i = 0; i < buttons.length; i++) {
-            buttons[i].className = buttons[i].className.replace(" active", "");
-        }
-
-        document.getElementById(tabName).style.display = "block";
-
-         if (event) {
-                event.currentTarget.className += " active";
-            } else {
-                if (tabName === "spot") {
-                    document.querySelector('.tab-button:nth-child(1)').className += " active";
-                } else if (tabName === "future") {
-                    document.querySelector('.tab-button:nth-child(2)').className += " active";
-                }
-            }
-        }
-          
-       function calculateLeverageProfitLoss() {
-            const positionType = document.getElementById('positionType').value;
-            const leverage = parseFloat(document.getElementById('leverageAmount').value);
-            const investment = parseFloat(document.getElementById('investmentLeverage').value);
-            const entryPrice = parseFloat(document.getElementById('entryPrice').value);
-            const exitPrice = parseFloat(document.getElementById('exitPrice').value);
-        
-            let profitLossDollar;
-            if (positionType === "long") {
-                profitLossDollar = (exitPrice - entryPrice) * investment;
-            } else { // short
-                profitLossDollar = (entryPrice - exitPrice) * investment;
-            }
-        
-            const IMR = 1 / leverage;
-            const initialMargin = investment * entryPrice * IMR;
-            const profitLossPercent = (profitLossDollar / initialMargin) * 100;
-        
-            const resultElementDollar = document.getElementById('leverageResultDollar');
-            const resultElementPercent = document.getElementById('leverageResultPercent');
-        
-            resultElementDollar.innerText = `Profit/Loss ($): $${profitLossDollar.toFixed(2)}`;
-            resultElementPercent.innerText = `ROE (%): ${profitLossPercent.toFixed(2)}%`;
-           
-            if (profitLossDollar < 0) {
-            resultElementDollar.style.color = 'blue';
-            resultElementPercent.style.color = 'blue';
-            } else if (profitLossDollar > 0) {
-                resultElementDollar.style.color = 'red';
-                resultElementPercent.style.color = 'red';
-            } else {
-                resultElementDollar.style.color = '#FFFFFF';
-                resultElementPercent.style.color = '#FFFFFF';
-            }
-        }
-
         // 언어별 텍스트 저장
         const languages = {
             en: {
@@ -494,10 +396,8 @@
                 } else {
                     resultElement.style.color = '#FFFFFF';
                 }
-            }
-              
-                showTab('spot');
-        };
+            }  
+        }
     </script>
 </body>
 </html>
