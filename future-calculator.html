@@ -334,13 +334,8 @@
             document.querySelector('label[for="investmentLeverage"]').innerText = lang.coinQuantity;
             document.querySelector('label[for="entryPrice"]').innerText = lang.entryPrice;
             document.querySelector('label[for="exitPrice"]').innerText = lang.exitPrice;
-            document.querySelector('label[for="buyPrice"]').innerText = lang.buyPrice;
-            document.querySelector('label[for="sellPrice"]').innerText = lang.sellPrice;
-            document.querySelector('label[for="investmentAmount"]').innerText = lang.investmentAmount;
-            document.querySelector('label[for="buyingFeeSelect"]').innerText = lang.buyingFee;
-            document.querySelector('label[for="sellingFeeSelect"]').innerText = lang.sellingFee;
-            document.querySelectorAll('button[onclick="calculateProfitLoss()"]')[0].innerText = lang.calculate;
             document.querySelectorAll('button[onclick="sharePNL()"]')[0].innerText = lang.sharePNL;
+            document.querySelector('button[onclick="calculateLeverageProfitLoss()"]').innerText = lang.calculate;
         }
 
 
