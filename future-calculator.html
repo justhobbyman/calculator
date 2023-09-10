@@ -229,10 +229,7 @@
             const futureResultPercent = document.getElementById('leverageResultPercent').innerText;
             
             let shareText;
-            if (spotResultPNL) {
-                shareText = spotResultPNL + '\n' + spotResultROE;
-            } else {
-                shareText = futureResultDollar + '\n' + futureResultPercent;
+            shareText = futureResultDollar + '\n' + futureResultPercent;
             }
             
             // 현재 페이지의 URL 추가
@@ -240,6 +237,7 @@
         
             copyToClipboard(shareText);
             alert('Your result and website link have been copied to the clipboard. Paste it wherever you like!');
+        }
         }
 
         function copyToClipboard(text) {
