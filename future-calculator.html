@@ -165,7 +165,7 @@
 </head>
 <body>
     <header>
-        coinvestFolio
+        CoinvestFolio
     </header>
 
     <nav>
@@ -297,9 +297,7 @@
         // 언어별 텍스트 저장
         const languages = {
             en: {
-                header: "Crypto PNL Calculator",
-                spotTab: "Spot Calculator",
-                futureTab: "Future Calculator",
+                header: "CoinvestFolio",
                 positionType: "Position Type:",
                 long: "Long",
                 short: "Short",
@@ -307,20 +305,11 @@
                 coinQuantity: "Coin Quantity:",
                 entryPrice: "Entry Price ($):",
                 exitPrice: "Exit Price ($):",
-                buyPrice: "Buy Price ($)",
-                sellPrice: "Sell Price ($)",
-                investmentAmount: "Investment Amount ($)",
-                buyingFee: "Buying Fee",
-                sellingFee: "Selling Fee",
                 calculate: "Calculate",
                 sharePNL: "Share My PNL"
             },
             kr: {
-                header: "크립토 PNL 계산기",
-                spotTab: "스팟 계산기",
-                futureTab: "퓨처 계산기",
-                spotTab: "현물 계산기",
-                futureTab: "선물 계산기",
+                header: "코인베스트폴리오",
                 positionType: "포지션 유형:",
                 long: "롱",
                 short: "숏",
@@ -328,11 +317,6 @@
                 coinQuantity: "코인 수량:",
                 entryPrice: "진입 가격 ($):",
                 exitPrice: "종료 가격 ($):",
-                buyPrice: "구매 가격 ($)",
-                sellPrice: "판매 가격 ($)",
-                investmentAmount: "투자 금액 ($)",
-                buyingFee: "구매 수수료",
-                sellingFee: "판매 수수료",
                 calculate: "계산하기",
                 sharePNL: "PNL 공유하기"
             }
@@ -343,8 +327,6 @@
             const lang = languages[selectedLanguage];
 
             document.querySelector('header').innerText = lang.header;
-            document.querySelector('.tab-button:nth-child(1)').innerText = lang.spotTab;
-            document.querySelector('.tab-button:nth-child(2)').innerText = lang.futureTab;
             document.querySelector('label[for="positionType"]').innerText = lang.positionType;
             document.querySelector('option[value="long"]').innerText = lang.long;
             document.querySelector('option[value="short"]').innerText = lang.short;
@@ -359,7 +341,6 @@
             document.querySelector('label[for="sellingFeeSelect"]').innerText = lang.sellingFee;
             document.querySelectorAll('button[onclick="calculateProfitLoss()"]')[0].innerText = lang.calculate;
             document.querySelectorAll('button[onclick="sharePNL()"]')[0].innerText = lang.sharePNL;
-            document.querySelector('button[onclick="calculateLeverageProfitLoss()"]').innerText = lang.calculate;
         }
 
 
