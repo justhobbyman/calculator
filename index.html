@@ -338,15 +338,6 @@
             const lang = languages[selectedLanguage];
 
             document.querySelector('header').innerText = lang.header;
-            document.querySelector('.tab-button:nth-child(1)').innerText = lang.spotTab;
-            document.querySelector('.tab-button:nth-child(2)').innerText = lang.futureTab;
-            document.querySelector('label[for="positionType"]').innerText = lang.positionType;
-            document.querySelector('option[value="long"]').innerText = lang.long;
-            document.querySelector('option[value="short"]').innerText = lang.short;
-            document.querySelector('label[for="leverageAmount"]').innerText = lang.leverage;
-            document.querySelector('label[for="investmentLeverage"]').innerText = lang.coinQuantity;
-            document.querySelector('label[for="entryPrice"]').innerText = lang.entryPrice;
-            document.querySelector('label[for="exitPrice"]').innerText = lang.exitPrice;
             document.querySelector('label[for="buyPrice"]').innerText = lang.buyPrice;
             document.querySelector('label[for="sellPrice"]').innerText = lang.sellPrice;
             document.querySelector('label[for="investmentAmount"]').innerText = lang.investmentAmount;
@@ -354,7 +345,6 @@
             document.querySelector('label[for="sellingFeeSelect"]').innerText = lang.sellingFee;
             document.querySelectorAll('button[onclick="calculateProfitLoss()"]')[0].innerText = lang.calculate;
             document.querySelectorAll('button[onclick="sharePNL()"]')[0].innerText = lang.sharePNL;
-            document.querySelector('button[onclick="calculateLeverageProfitLoss()"]').innerText = lang.calculate;
         }
 
 
