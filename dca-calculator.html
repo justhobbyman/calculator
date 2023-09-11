@@ -127,10 +127,15 @@
 
         /* 데스크톱 장치 */
         @media (min-width: 769px) {
-        .calculator {
-            padding: 40px 50px;
+            .calculator {
+                padding: 40px 50px;
+            }
+            .nav-menu {
+                max-height: none; /* 초기화하여 모든 메뉴 항목들이 표시되도록 함 */
+                display: flex; /* 수평으로 배열하기 위해 flex를 사용합니다 */
             }
         }
+
         /* 모바일 */
         @media (max-width: 768px) {
             .hamburger-menu {
@@ -415,9 +420,13 @@
             document.querySelector('button[onclick="calculateLeverageProfitLoss()"]').innerText = lang.calculate;
         }
 
-        function toggleMenu() {
+       function toggleMenu() {
             const menu = document.querySelector('.nav-menu');
-            menu.classList.toggle('active');
+            if (menu.style.maxHeight === "150px") {
+                menu.style.maxHeight = "0";
+            } else {
+                menu.style.maxHeight = "150px";
+            }
         }
         
 
