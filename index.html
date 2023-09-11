@@ -140,17 +140,16 @@
             background-color: #000000;
             overflow: hidden;
             position: fixed;
-            top: 80px; /* 헤더의 높이에 맞게 조절 */
+            top: 80px;
             width: 100%;
             z-index: 999;
-            display: flex; /* flexbox를 사용하여 내부 항목들을 옆으로 배열 */
-            justify-content: flex-start; /* 로고와 메뉴 사이에 공간을 최대로 만듭니다 */
-            align-items: center; /* 로고와 메뉴 항목들을 수직 중앙 정렬합니다 */
-            padding: 0 20px; /* 좌우 패딩을 추가하여 로고와 메뉴가 화면 끝에 너무 가깝게 위치하지 않도록 합니다 */
+            display: flex;
+            justify-content: space-between; /* 이 부분을 수정 */
+            align-items: center;
+            padding: 0 20px;
         }
 
         nav a {
-            float: left;
             display: block;
             color: white;
             text-align: center;
@@ -178,7 +177,12 @@
         .language-container {
             display: flex;
             align-items: center;
-        }     
+        }
+        .left-container {
+            display: flex;
+            align-items: center;
+        }
+        
     </style>
 </head>
 <body>
@@ -187,13 +191,15 @@
     </header>
 
     <nav>
-        <div class="nav-logo">
-            <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
-        </div>
-        <div class="nav-menu">
-            <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
-            <a href="future-calculator">Future Calculator</a>
-            <a href="dca-calculator">DCA Calculator</a>
+        <div class="left-container">
+            <div class="nav-logo">
+                <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
+                <a href="future-calculator">Future Calculator</a>
+                <a href="dca-calculator">DCA Calculator</a>
+            </div>
         </div>
         <div class="language-container">
             <select id="languageSelect" onchange="changeLanguage()">
@@ -202,6 +208,7 @@
             </select>
         </div>
     </nav>
+
 
 
      <div class="spot-calculator">
