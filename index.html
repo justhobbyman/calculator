@@ -47,6 +47,7 @@
             border-radius: 8px;
             text-align: center; 
             padding-left: 10px; 
+            margin-left: 50px;
         }
         .spot-calculator {
             background-color: #FFFFFF;
@@ -172,6 +173,11 @@
             align-items: center;
             margin-right: 10px;
         }
+
+        .language-container {
+            display: flex;
+            align-items: center;
+        }     
     </style>
 </head>
 <body>
@@ -187,6 +193,12 @@
             <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
             <a href="future-calculator">Future Calculator</a>
             <a href="dca-calculator">DCA Calculator</a>
+        </div>
+        <div class="language-container">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">EN</option>
+                <option value="kr">KR</option>
+            </select>
         </div>
     </nav>
 
