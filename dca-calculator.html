@@ -124,27 +124,28 @@
             padding: 30px 40px;
             }
         }
-
-        /* 데스크톱 장치 */
-        @media (min-width: 769px) {
-            button#menuToggle {
-                display: none;
-            }
-            nav#navMenu {
-                display: flex;
-                flex-direction: row;
-            }
-        }
         /* 모바일 화면에서는 햄버거 메뉴 표시 */
         @media (max-width: 768px) {
-            button#menuToggle {
+            #menuToggle {
                 display: block;
             }
-            nav#navMenu {
+            #navMenu {
                 display: none;
                 flex-direction: column;
             }
         }
+        
+        /* 데스크톱 장치 */
+        @media (min-width: 769px) {
+            #menuToggle {
+                display: none;
+            }
+            #navMenu {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+      
 
         .content {
             display: none;
@@ -245,13 +246,13 @@
                 <a href="https://www.coinvestfolio.com/">
                     <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
                 </a>
-        </div>
-        <button id="menuToggle" onclick="toggleMenu()">☰</button>
-            <nav id="navMenu" class="nav-menu">
+            </div>
+            <button id="menuToggle" onclick="toggleMenu()">☰</button>
+            <div id="navMenu" class="nav-menu">
                 <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
                 <a href="future-calculator">Future Calculator</a>
                 <a href="dca-calculator">DCA Calculator</a>
-            </nav>
+            </div>
         </div>
         <div class="language-container">
             <select id="languageSelect" onchange="changeLanguage()">
