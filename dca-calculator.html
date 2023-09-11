@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="WqVYzW8N3gkE6iEBnUzrkVRODWjX37RLIEHehfhdf5E" />
     <style>
         body {
-            padding: 100px 0 50px 0; /* 상, 우, 하, 좌 */
+            padding: 280px 0 50px 0;
             font-family: Arial, sans-serif;
             background-color: #000000;
             text-align: center;
@@ -19,30 +19,41 @@
         header {
             color: #FFFFFF;
             font-size: 34px;
-            margin-top: 10px;
-            margin-bottom: 30px;
+            margin-top: 0; /* 이 값을 0으로 설정 */
+            margin-bottom: 0; /* 이 값을 0으로 설정 */
             font-weight: bold;
-            position: fixed; /* 헤더를 고정 */
+            position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background-color: #000; /* 배경색 추가 */
+            background-color: #000000;
             text-align: center;
+            height: 80px;
         }
-        
-        #languageSelect {
-            width: 80px;
+
+        #logo {
+            width: 200px; /* 로고의 크기를 조절합니다 */
+            height: auto;
+        }
+                
+       #languageSelect {
+            width: 75px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             background-color: #242424;
             color: #FFFFFF;
-            border: 1px solid #EE7E19;
+            border: 3px solid #EE7E19;
             border-radius: 8px;
             text-align: center; 
-            padding-left: 10px; 
+            padding: 10px 10px; /* 위아래 패딩을 조절하고 좌우 패딩도 동일하게 설정합니다. */
+            height: 45px; /* 필요한 경우 높이를 명시적으로 설정합니다. */
+            margin-left: 0px;
+            margin-right: 40px;
         }
+
         .dca-calculator {
+            padding-top: 150px;
             background-color: #FFFFFF;
             display: flex;
             flex-direction: column;
@@ -119,29 +130,6 @@
             padding: 40px 50px;
             }
         }
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .tab-button {
-            padding: 10px 20px;
-            cursor: pointer;
-            background-color: #242424;
-            color: white;
-            border: 1px solid #EE7E19;
-            border-radius: 8px;
-            margin: 0 5px;
-            transition: background-color 0.3s;
-        }
-
-       .tab-button:hover {
-            background-color: #EE7E19;
-        }
-        
-        .tab-button.active {
-            background-color: #EE7E19;
-        }
 
         .content {
             display: none;
@@ -151,50 +139,85 @@
             display: block;
         }
 
-        nav {
-            background-color: #333;
+       nav {
+            height: 70px;
+            background-color: #000000;
             overflow: hidden;
             position: fixed;
-            top: 60px; /* 2. nav의 top 값을 조정 */
+            top: 80px;
             width: 100%;
             z-index: 999;
+            display: flex;
+            justify-content: space-between; /* 이 부분을 수정 */
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 2px solid #888888;
         }
 
         nav a {
-            float: left;
             display: block;
             color: white;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
+            line-height: 50px;
+            vertical-align: middle;
         }
 
         nav a:hover {
-            background-color: #ddd;
+            background-color: #333;
             color: black;
+        }
+
+        .nav-menu a {
+            margin-left: 10px; /* 메뉴 항목들 사이의 간격을 조절합니다 */
+        }
+        .nav-menu {
+            display: flex; /* 수평으로 배열하기 위해 flex를 사용합니다 */
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .language-container {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .left-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
         }
         
     </style>
 </head>
 <body>
     <header>
-        CoinvestFolio
+        
     </header>
 
     <nav>
-        <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
-        <a href="future-calculator">Future Calculator</a>
-        <a href="dca-calculator">DCA Calculator</a>
-        
+        <div class="left-container">
+            <div class="nav-logo">
+                <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
+                <a href="future-calculator">Future Calculator</a>
+                <a href="dca-calculator">DCA Calculator</a>
+            </div>
+        </div>
+        <div class="language-container">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">EN</option>
+                <option value="kr">KR</option>
+            </select>
+        </div>
     </nav>
-
     
-     <div style="text-align: right; padding-right: 50px; font-weight: bold; margin-bottom: 20px;">
-        <select id="languageSelect" onchange="changeLanguage()">
-            <option value="en">EN</option>
-            <option value="kr">KR</option>
-        </select>
-    </div>
 
     <div class="future-calculator"> 
     <label for="positionType">Position Type:</label>
