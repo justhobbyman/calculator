@@ -11,7 +11,7 @@
     <meta name="google-site-verification" content="WqVYzW8N3gkE6iEBnUzrkVRODWjX37RLIEHehfhdf5E" />
     <style>
         body {
-            padding: 280px 0 50px 0;
+            padding: 200px 0 50px 0;
             font-family: Arial, sans-serif;
             background-color: #000000;
             text-align: center;
@@ -165,11 +165,6 @@
             vertical-align: middle;
         }
 
-        nav a:hover {
-            background-color: #333;
-            color: black;
-        }
-
         .nav-menu a {
             margin-left: 10px; /* 메뉴 항목들 사이의 간격을 조절합니다 */
         }
@@ -180,8 +175,12 @@
             display: flex;
             align-items: center;
             margin-right: 10px;
+            line-height: 0;
         }
-
+        .nav-logo a {
+            display: flex;
+            align-items: center;
+        }
         .language-container {
             display: flex;
             align-items: center;
@@ -191,6 +190,12 @@
             display: flex;
             align-items: center;
             flex-grow: 1;
+        }
+        .calculator-title {
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 24px;
+            font-weight: bold;
         }
         
     </style>
@@ -220,6 +225,11 @@
             </select>
         </div>
     </nav>
+
+    <div class="calculator-title">
+        <h2>DCA Calculator</h2>
+    </div>
+
     
 
     <div class="dca-calculator"> 
