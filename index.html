@@ -137,6 +137,7 @@
         }
 
        nav {
+            height: 70px;
             background-color: #000000;
             overflow: hidden;
             position: fixed;
@@ -160,14 +161,16 @@
         }
 
         nav a:hover {
-            background-color: #ddd;
+            background-color: #333;
             color: black;
         }
 
         .nav-menu a {
             margin-left: 10px; /* 메뉴 항목들 사이의 간격을 조절합니다 */
         }
-
+        .nav-menu {
+            display: flex; /* 수평으로 배열하기 위해 flex를 사용합니다 */
+        }
         .nav-logo {
             display: flex;
             align-items: center;
@@ -177,6 +180,7 @@
         .language-container {
             display: flex;
             align-items: center;
+            margin-left: auto;
         }
         .left-container {
             display: flex;
