@@ -131,18 +131,13 @@
             padding: 40px 50px;
             }
         }
-         @media (max-width: 480px) { /* 모바일 화면에 대한 반응형 스타일 */
-            .nav-menu {
-                flex-direction: column; /* 메뉴 항목을 세로로 배열합니다. */
-                align-items: center;
+         @media (max-width: 768px) {
+            .hamburger {
+                display: flex; /* 모바일 화면에서 햄버거 아이콘 표시 */
             }
-
-            .nav-menu a {
-                margin-left: 0; /* 메뉴 항목의 좌측 마진을 제거합니다. */
-            }
-
-            .language-container {
-                margin-top: 10px; /* 언어 선택 메뉴에 상단 마진을 추가합니다. */
+        
+            .nav-menu.active {
+                display: flex; /* 메뉴가 활성화되면 표시 */
             }
         }
         
@@ -185,9 +180,9 @@
             padding: 14px 10px;
         }
         .nav-menu {
-            display: flex; /* 수평으로 배열하기 위해 flex를 사용합니다 */
-            flex-wrap: wrap;
-            justify-content: center;
+            display: none; /* 수평으로 배열하기 위해 flex를 사용합니다 */
+            flex-direction: column;
+            align-items: center;
         }
         .nav-logo {
             display: flex;
@@ -220,6 +215,19 @@
             font-weight: bold;
             margin-bottom: 50px;
         }
+        .hamburger {
+            display: none; /* 기본적으로 숨김 */
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+        }
     </style>
 </head>
 <body>
@@ -231,8 +239,13 @@
         <div class="left-container">
             <div class="nav-logo">
                 <a href="https://www.coinvestfolio.com/">
-                    <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
+                    <img src="https://www.coinvestfolio.com/logo.svg" alt="CoininvestFolio Logo" id="logo">
                 </a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()"> <!-- 햄버거 아이콘 추가 -->
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
             <div class="nav-menu">
                 <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
@@ -247,6 +260,7 @@
             </select>
         </div>
     </nav>
+
 
     
     <div class="calculator-title">
@@ -402,7 +416,12 @@
             document.querySelector('button[onclick="calculateLeverageProfitLoss()"]').innerText = lang.calculate;
         }
 
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('active'); // 메뉴 활성화/비활성화
+        }
 
+        
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const sharedResult = urlParams.get('result');
