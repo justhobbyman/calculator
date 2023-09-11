@@ -131,6 +131,21 @@
             padding: 40px 50px;
             }
         }
+         @media (max-width: 480px) { /* 모바일 화면에 대한 반응형 스타일 */
+            .nav-menu {
+                flex-direction: column; /* 메뉴 항목을 세로로 배열합니다. */
+                align-items: center;
+            }
+
+            .nav-menu a {
+                margin-left: 0; /* 메뉴 항목의 좌측 마진을 제거합니다. */
+            }
+
+            .language-container {
+                margin-top: 10px; /* 언어 선택 메뉴에 상단 마진을 추가합니다. */
+            }
+        }
+        
 
         .content {
             display: none;
@@ -151,7 +166,7 @@
             display: flex;
             justify-content: space-between; /* 이 부분을 수정 */
             align-items: center;
-            padding: 0 20px;
+            padding: 0 10px;
             border-bottom: 2px solid #888888;
         }
 
@@ -166,7 +181,8 @@
         }
 
         .nav-menu a {
-            margin-left: 10px; /* 메뉴 항목들 사이의 간격을 조절합니다 */
+            margin-left: 10px;
+            padding: 14px 10px;
         }
         .nav-menu {
             display: flex; /* 수평으로 배열하기 위해 flex를 사용합니다 */
@@ -180,6 +196,9 @@
         .nav-logo a {
             display: flex;
             align-items: center;
+        }
+        .nav-logo img {
+            width: 150px;
         }
 
         .language-container {
