@@ -200,19 +200,24 @@
     </header>
 
     <nav>
-        <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
-        <a href="future-calculator">Future Calculator</a>
-        <a href="dca-calculator">DCA Calculator</a>
-        
+        <div class="left-container">
+            <div class="nav-logo">
+                <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
+                <a href="future-calculator">Future Calculator</a>
+                <a href="dca-calculator">DCA Calculator</a>
+            </div>
+        </div>
+        <div class="language-container">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">EN</option>
+                <option value="kr">KR</option>
+            </select>
+        </div>
     </nav>
-
     
-     <div style="text-align: right; padding-right: 50px; font-weight: bold; margin-bottom: 20px;">
-        <select id="languageSelect" onchange="changeLanguage()">
-            <option value="en">EN</option>
-            <option value="kr">KR</option>
-        </select>
-    </div>
 
     <div class="future-calculator"> 
     <label for="positionType">Position Type:</label>
