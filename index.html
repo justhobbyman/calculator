@@ -314,12 +314,7 @@
             const spotResultPNL = document.getElementById('resultPNL').innerText;
             const spotResultROE = document.getElementById('resultROE').innerText;
             
-            let shareText;
-            if (spotResultPNL) {
-                shareText = spotResultPNL + '\n' + spotResultROE;
-            } else {
-                shareText = futureResultDollar + '\n' + futureResultPercent;
-            }
+            let shareText = spotResultPNL + '\n' + spotResultROE;
             
             // 현재 페이지의 URL 추가
             shareText += '\n\n' + window.location.href;
