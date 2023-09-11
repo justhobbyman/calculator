@@ -31,11 +31,15 @@
             padding: 10px 0; /* 패딩을 추가하여 헤더의 높이를 조절 */
         }
 
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
         #logo {
-             width: 50px; /* 원하는 크기로 조절 */
+            width: 200px; /* 로고의 크기를 조절합니다 */
             height: auto;
-            margin-right: 20px; /* 오른쪽 여백 추가 */
-            vertical-align: middle; /* 메뉴 항목과 수직 중앙 정렬 */
+            margin-right: 20px; /* 로고와 메뉴 사이의 간격을 조절합니다 */
         }
                 
         #languageSelect {
@@ -159,13 +163,17 @@
             display: block;
         }
 
-        nav {
+       nav {
             background-color: #333;
             overflow: hidden;
             position: fixed;
             top: 100px; /* 헤더의 높이에 맞게 조절 */
             width: 100%;
             z-index: 999;
+            display: flex; /* flexbox를 사용하여 내부 항목들을 옆으로 배열 */
+            justify-content: space-between; /* 로고와 메뉴 사이에 공간을 최대로 만듭니다 */
+            align-items: center; /* 로고와 메뉴 항목들을 수직 중앙 정렬합니다 */
+            padding: 0 20px; /* 좌우 패딩을 추가하여 로고와 메뉴가 화면 끝에 너무 가깝게 위치하지 않도록 합니다 */
         }
 
         nav a {
@@ -183,7 +191,15 @@
             background-color: #ddd;
             color: black;
         }
-        
+
+        .nav-menu a {
+            margin-left: 20px; /* 메뉴 항목들 사이의 간격을 조절합니다 */
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -192,12 +208,16 @@
     </header>
 
     <nav>
-        <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
-        <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
-        <a href="future-calculator">Future Calculator</a>
-        <a href="dca-calculator">DCA Calculator</a>
-        
+        <div class="nav-logo">
+            <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
+        </div>
+        <div class="nav-menu">
+            <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
+            <a href="future-calculator">Future Calculator</a>
+            <a href="dca-calculator">DCA Calculator</a>
+        </div>
     </nav>
+
 
     
      <div style="text-align: right; padding-right: 50px; font-weight: bold; margin-bottom: 20px;">
