@@ -127,8 +127,8 @@
 
         /* 데스크톱 장치 */
         @media (min-width: 769px) {
-        .calculator {
-            padding: 40px 50px;
+        .nav-menu {
+                display: flex; /* 데스크톱에서 표시 */
             }
         }
 
@@ -169,7 +169,7 @@
             margin-left: 10px; /* 메뉴 항목들 사이의 간격을 조절합니다 */
         }
         .nav-menu {
-            display: flex; /* 수평으로 배열하기 위해 flex를 사용합니다 */
+            display: none; /* 수평으로 배열하기 위해 flex를 사용합니다 */
         }
         .nav-logo {
             display: flex;
@@ -207,6 +207,12 @@
     </header>
 
     <nav>
+        <button id="menuToggle" class="lg:hidden rounded-lg focus:outline-none focus:shadow-outline text-red-500">
+            <span class="sr-only">Open menu</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="block h-6 w-6">
+                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
         <div class="left-container">
             <div class="nav-logo">
                 <a href="https://www.coinvestfolio.com/">
@@ -380,7 +386,7 @@
             document.querySelectorAll('button[onclick="sharePNL()"]')[0].innerText = lang.sharePNL;
             document.querySelector('button[onclick="calculateLeverageProfitLoss()"]').innerText = lang.calculate;
         }
-
+        
 
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -399,7 +405,15 @@
                     resultElement.style.color = '#FFFFFF';
                 }
             } 
-        };
+        }
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu.style.display === 'none' || navMenu.style.display === '') {
+                navMenu.style.display = 'flex';
+            } else {
+                navMenu.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
