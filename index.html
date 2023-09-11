@@ -15,12 +15,20 @@
             background-color: #000000;
             text-align: center;
         }
+
         header {
             color: #FFFFFF;
             font-size: 34px;
             margin-bottom: 30px;
             font-weight: bold;
+            position: fixed; /* 헤더를 고정 */
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #000; /* 배경색 추가 */
+            text-align: center;
         }
+        
         #languageSelect {
             width: 80px;
             overflow: hidden;
@@ -141,14 +149,14 @@
         .content.active {
             display: block;
         }
+
         nav {
             background-color: #333;
             overflow: hidden;
-            margin-bottom: 20px;
             position: fixed;
-            top: 0;
+            top: 60px; /* 2. nav의 top 값을 조정 */
             width: 100%;
-            z-index: 1000;
+            z-index: 999;
         }
 
         nav a {
