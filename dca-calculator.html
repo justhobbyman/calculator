@@ -132,6 +132,20 @@
             }
         }
 
+        @media (max-width: 768px) {
+            #menuToggle {
+                display: block;
+            }
+            .nav-menu, .language-container {
+                display: none;
+                flex-direction: column;
+                width: 100%; /* 전체 너비를 차지하도록 설정 */
+            }
+            nav a {
+                width: 100%; /* 전체 너비를 차지하도록 설정 */
+                text-align: left; /* 왼쪽 정렬 */
+            }
+        }
         .content {
             display: none;
         }
@@ -149,7 +163,7 @@
             width: 100%;
             z-index: 999;
             display: flex;
-            justify-content: space-between; /* 이 부분을 수정 */
+            justify-content: flex-start; /* 이 부분을 수정 */
             align-items: center;
             padding: 0 20px;
             border-bottom: 2px solid #888888;
@@ -167,6 +181,7 @@
 
         .nav-menu a {
             margin-left: 10px; /* 메뉴 항목들 사이의 간격을 조절합니다 */
+            flex-grow: 1;
         }
         .nav-menu {
             display: none; /* 수평으로 배열하기 위해 flex를 사용합니다 */
@@ -198,6 +213,10 @@
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 50px;
+        }
+        #menuToggle {
+            display: none; /* 기본적으로 숨기기 */
+            margin-left: auto; /* 오른쪽 정렬 */
         }
     </style>
 </head>
@@ -408,12 +427,18 @@
         }
         document.getElementById('menuToggle').addEventListener('click', function() {
             const navMenu = document.querySelector('.nav-menu');
-            if (navMenu.style.display === 'none' || navMenu.style.display === '') {
-                navMenu.style.display = 'flex';
-            } else {
-                navMenu.style.display = 'none';
-            }
+            const languageContainer = document.querySelector('.language-container');
+            toggleDisplay(navMenu);
+            toggleDisplay(languageContainer);
         });
+
+        function toggleDisplay(element) {
+            if (element.style.display === 'none' || element.style.display === '') {
+                element.style.display = 'flex';
+            } else {
+                element.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
