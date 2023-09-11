@@ -140,6 +140,10 @@
             button#menuToggle {
                 display: block;
             }
+            nav#navMenu {
+                display: none;
+                flex-direction: column;
+            }
         }
 
         .content {
@@ -186,6 +190,7 @@
             align-items: center;
             margin-right: 10px;
             line-height: 0;
+            flex: 1;
         }
         .nav-logo a {
             display: flex;
@@ -200,7 +205,8 @@
         .left-container {
             display: flex;
             align-items: center;
-            flex-grow: 1;
+            justify-content: space-between; /* 로고와 메뉴 사이의 공간을 최대로 확장 */
+            width: 100%; /* 전체 너비 사용 */
         }
         .calculator-title {
             text-align: center;
@@ -210,8 +216,13 @@
             margin-bottom: 50px;
         }
         #navMenu {
-            display: none;
-            flex-direction: column;
+            flex: 2; /* 메뉴가 더 많은 공간을 차지하도록 설정 */
+            display: flex;
+            justify-content: space-between; /* 메뉴 항목 사이의 공간을 동일하게 설정 */
+        }
+        .nav-menu a {
+            margin-left: 10px;
+            margin-right: 10px;
         }
         #menuToggle {
             background: none;
@@ -234,13 +245,13 @@
                 <a href="https://www.coinvestfolio.com/">
                     <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
                 </a>
-            </div>
-            <button id="menuToggle" onclick="toggleMenu()">☰</button>
-            <nav id="navMenu">
+        </div>
+        <button id="menuToggle" onclick="toggleMenu()">☰</button>
+            <nav id="navMenu" class="nav-menu">
                 <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
                 <a href="future-calculator">Future Calculator</a>
                 <a href="dca-calculator">DCA Calculator</a>
-        </nav>
+            </nav>
         </div>
         <div class="language-container">
             <select id="languageSelect" onchange="changeLanguage()">
