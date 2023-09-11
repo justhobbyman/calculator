@@ -131,8 +131,9 @@
                 padding: 40px 50px;
             }
             .nav-menu {
-                max-height: none; /* 초기화하여 모든 메뉴 항목들이 표시되도록 함 */
-                display: flex; /* 수평으로 배열하기 위해 flex를 사용합니다 */
+                max-height: none;
+                display: flex;
+                overflow: visible;
             }
         }
 
@@ -141,15 +142,13 @@
             .hamburger-menu {
                 display: block;
             }
-        
             .nav-menu {
-                display: none; /* 기본적으로 숨김 */
+                display: none;
             }
-        
             .nav-menu.active {
                 display: flex;
-                flex-direction: column; /* 수직으로 메뉴 항목 정렬 */
-                max-height: 300px; /* 적절한 높이 설정 */
+                flex-direction: column;
+                max-height: 300px;
             }
         }
                 
