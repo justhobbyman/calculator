@@ -10,7 +10,7 @@
      crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="WqVYzW8N3gkE6iEBnUzrkVRODWjX37RLIEHehfhdf5E" />
     <style>
-         body {
+        body {
             padding: 200px 0 50px 0;
             font-family: Arial, sans-serif;
             background-color: #000000;
@@ -53,7 +53,7 @@
             margin-right: 40px;
         }
 
-        .dca-calculator {
+        .future-calculator {
             padding-top: 150px;
             background-color: #FFFFFF;
             display: flex;
@@ -124,28 +124,13 @@
             padding: 30px 40px;
             }
         }
-        /* 모바일 화면에서는 햄버거 메뉴 표시 */
-        @media (max-width: 768px) {
-            #menuToggle {
-                display: block;
-            }
-            #navMenu {
-                display: none;
-                flex-direction: column;
-            }
-        }
-        
+
         /* 데스크톱 장치 */
         @media (min-width: 769px) {
-            #menuToggle {
-                display: none;
-            }
-            #navMenu {
-                display: flex;
-                flex-direction: row;
+        .calculator {
+            padding: 40px 50px;
             }
         }
-      
 
         .content {
             display: none;
@@ -158,7 +143,7 @@
        nav {
             height: 70px;
             background-color: #000000;
-            overflow: visible;
+            overflow: hidden;
             position: fixed;
             top: 80px;
             width: 100%;
@@ -191,7 +176,6 @@
             align-items: center;
             margin-right: 10px;
             line-height: 0;
-            flex: 1;
         }
         .nav-logo a {
             display: flex;
@@ -206,8 +190,7 @@
         .left-container {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* 로고와 메뉴 사이의 공간을 최대로 확장 */
-            width: 100%; /* 전체 너비 사용 */
+            flex-grow: 1;
         }
         .calculator-title {
             text-align: center;
@@ -215,23 +198,6 @@
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 50px;
-        }
-        #navMenu {
-            flex: 2; /* 메뉴가 더 많은 공간을 차지하도록 설정 */
-            display: flex;
-            justify-content: space-between; /* 메뉴 항목 사이의 공간을 동일하게 설정 */
-        }
-        .nav-menu a {
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-        #menuToggle {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            display: none; /* 기본적으로 숨기기 */
         }
     </style>
 </head>
@@ -247,8 +213,7 @@
                     <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
                 </a>
             </div>
-            <button id="menuToggle" onclick="toggleMenu()">☰</button>
-            <div id="navMenu" class="nav-menu">
+            <div class="nav-menu">
                 <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
                 <a href="future-calculator">Future Calculator</a>
                 <a href="dca-calculator">DCA Calculator</a>
@@ -262,13 +227,13 @@
         </div>
     </nav>
 
+    
     <div class="calculator-title">
-        <h2>DCA Calculator</h2>
+        <h2>Crypto Future Profit/Loss Calculator</h2>
     </div>
-
     
 
-    <div class="dca-calculator"> 
+    <div class="future-calculator"> 
     <label for="positionType">Position Type:</label>
     <select id="positionType">
         <option value="long">Long</option>
@@ -313,16 +278,14 @@
             const futureResultDollar = document.getElementById('leverageResultDollar').innerText;
             const futureResultPercent = document.getElementById('leverageResultPercent').innerText;
             
-            let shareText;
-            shareText = futureResultDollar + '\n' + futureResultPercent;
-            }
+            let shareText = futureResultDollar + '\n' + futureResultPercent;
+            
             
             // 현재 페이지의 URL 추가
             shareText += '\n\n' + window.location.href;
         
             copyToClipboard(shareText);
             alert('Your result and website link have been copied to the clipboard. Paste it wherever you like!');
-        }
         }
 
         function copyToClipboard(text) {
@@ -380,7 +343,6 @@
         // 언어별 텍스트 저장
         const languages = {
             en: {
-                header: "CoinvestFolio",
                 positionType: "Position Type:",
                 long: "Long",
                 short: "Short",
@@ -392,7 +354,6 @@
                 sharePNL: "Share My PNL"
             },
             kr: {
-                header: "코인베스트폴리오",
                 positionType: "포지션 유형:",
                 long: "롱",
                 short: "숏",
@@ -409,7 +370,6 @@
             const selectedLanguage = document.getElementById('languageSelect').value;
             const lang = languages[selectedLanguage];
 
-            document.querySelector('header').innerText = lang.header;
             document.querySelector('label[for="positionType"]').innerText = lang.positionType;
             document.querySelector('option[value="long"]').innerText = lang.long;
             document.querySelector('option[value="short"]').innerText = lang.short;
@@ -420,16 +380,8 @@
             document.querySelectorAll('button[onclick="sharePNL()"]')[0].innerText = lang.sharePNL;
             document.querySelector('button[onclick="calculateLeverageProfitLoss()"]').innerText = lang.calculate;
         }
-        
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            if (menu.style.display === "none" || menu.style.display === "") {
-                menu.style.display = "flex";
-            } else {
-                menu.style.display = "none";
-            }
-        }
-        
+
+
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const sharedResult = urlParams.get('result');
