@@ -127,8 +127,18 @@
 
         /* 데스크톱 장치 */
         @media (min-width: 769px) {
-        .calculator {
-            padding: 40px 50px;
+            button#menuToggle {
+                display: none;
+            }
+            nav#navMenu {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+        /* 모바일 화면에서는 햄버거 메뉴 표시 */
+        @media (max-width: 768px) {
+            button#menuToggle {
+                display: block;
             }
         }
 
@@ -199,6 +209,18 @@
             font-weight: bold;
             margin-bottom: 50px;
         }
+        #navMenu {
+            display: none;
+            flex-direction: column;
+        }
+        #menuToggle {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            display: none; /* 기본적으로 숨기기 */
+        }
     </style>
 </head>
 <body>
@@ -213,11 +235,12 @@
                     <img src="https://www.coinvestfolio.com/logo.svg" alt="CoinvestFolio Logo" id="logo">
                 </a>
             </div>
-            <div class="nav-menu">
+            <button id="menuToggle" onclick="toggleMenu()">☰</button>
+            <nav id="navMenu">
                 <a href="https://www.coinvestfolio.com/">Spot Calculator</a>
                 <a href="future-calculator">Future Calculator</a>
                 <a href="dca-calculator">DCA Calculator</a>
-            </div>
+        </nav>
         </div>
         <div class="language-container">
             <select id="languageSelect" onchange="changeLanguage()">
@@ -386,7 +409,15 @@
             document.querySelector('button[onclick="calculateLeverageProfitLoss()"]').innerText = lang.calculate;
         }
         
-
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            if (menu.style.display === "none" || menu.style.display === "") {
+                menu.style.display = "flex";
+            } else {
+                menu.style.display = "none";
+            }
+        }
+        
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const sharedResult = urlParams.get('result');
