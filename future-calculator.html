@@ -264,16 +264,14 @@
             const futureResultDollar = document.getElementById('leverageResultDollar').innerText;
             const futureResultPercent = document.getElementById('leverageResultPercent').innerText;
             
-            let shareText;
-            shareText = futureResultDollar + '\n' + futureResultPercent;
-            }
+            let shareText = futureResultDollar + '\n' + futureResultPercent;
+            
             
             // 현재 페이지의 URL 추가
             shareText += '\n\n' + window.location.href;
         
             copyToClipboard(shareText);
             alert('Your result and website link have been copied to the clipboard. Paste it wherever you like!');
-        }
         }
 
         function copyToClipboard(text) {
@@ -331,7 +329,6 @@
         // 언어별 텍스트 저장
         const languages = {
             en: {
-                header: "CoinvestFolio",
                 positionType: "Position Type:",
                 long: "Long",
                 short: "Short",
@@ -343,7 +340,6 @@
                 sharePNL: "Share My PNL"
             },
             kr: {
-                header: "코인베스트폴리오",
                 positionType: "포지션 유형:",
                 long: "롱",
                 short: "숏",
@@ -360,7 +356,6 @@
             const selectedLanguage = document.getElementById('languageSelect').value;
             const lang = languages[selectedLanguage];
 
-            document.querySelector('header').innerText = lang.header;
             document.querySelector('label[for="positionType"]').innerText = lang.positionType;
             document.querySelector('option[value="long"]').innerText = lang.long;
             document.querySelector('option[value="short"]').innerText = lang.short;
