@@ -37,8 +37,12 @@
         }
 
         function calculateDCA() {
-            let totalShares = investments.reduce((acc, curr) => acc + curr.shares, 0);
-            let totalCost = investments.reduce((acc, curr) => acc + curr.totalCost, 0);
+            let initialShares = parseFloat(document.getElementById('initialShares').value);
+            let initialAvgBuy = parseFloat(document.getElementById('initialAvgBuy').value);
+            let initialTotalCost = initialShares * initialAvgBuy;
+
+            let totalShares = investments.reduce((acc, curr) => acc + curr.shares, initialShares);
+            let totalCost = investments.reduce((acc, curr) => acc + curr.totalCost, initialTotalCost);
             let avgCost = totalCost / totalShares;
 
             document.getElementById('resultShares').innerText = "Shares: " + totalShares;
@@ -49,6 +53,8 @@
         function resetCalculator() {
             investments = [];
             displayInvestments();
+            document.getElementById('initialShares').value = '';
+            document.getElementById('initialAvgBuy').value = '';
             document.getElementById('resultShares').innerText = '';
             document.getElementById('resultAvgBuy').innerText = '';
             document.getElementById('resultTotalCost').innerText = '';
@@ -57,6 +63,16 @@
 </head>
 <body>
     <h2>DCA Calculator</h2>
+    
+    <h3>Initial Investment</h3>
+    <div>
+        <label>Shares:</label>
+        <input type="number" id="initialShares">
+        <label>Avg Buy:</label>
+        <input type="number" id="initialAvgBuy">
+    </div>
+    
+    <h3>Next Investments</h3>
     <div>
         <label>Shares:</label>
         <input type="number" id="shares">
@@ -64,6 +80,7 @@
         <input type="number" id="avgBuy">
         <button onclick="addInvestment()">Add</button>
     </div>
+    
     <div id="investments"></div>
     <button onclick="calculateDCA()">Calculate</button>
     <button onclick="resetCalculator()">Reset</button>
