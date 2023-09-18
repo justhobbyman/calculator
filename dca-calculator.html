@@ -21,6 +21,11 @@
             displayInvestments();
         }
 
+        function removeInvestment(index) {
+            investments.splice(index, 1);
+            displayInvestments();
+        }
+
         function displayInvestments() {
             let container = document.getElementById('investments');
             container.innerHTML = '';
@@ -28,6 +33,7 @@
             investments.forEach((investment, index) => {
                 container.innerHTML += `
                     <div>
+                        <button onclick="removeInvestment(${index})">-</button>
                         Shares (${index + 1}): ${investment.shares}
                         Avg Buy (${index + 1}): ${investment.avgBuy}
                         Total Cost (${index + 1}): ${investment.totalCost}
